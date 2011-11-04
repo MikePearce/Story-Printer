@@ -24,16 +24,16 @@ After this, there will be more, but for me the natural progression is for a     
 
 This is based on codeigniter, so, create yourself a vhost:
 
-`<VirtualHost *:80>
-    DocumentRoot /some/place/to/have/storyprinter/public
-    ServerName www.your.url 
-    <Directory "/some/place/to/have/storyprinter/public">
-        Options FollowSymLinks
-        AllowOverride FileInfo	     
-        RewriteEngine On
-        RewriteCond $1 !^(index\.php|css|img|images|fckeditor|scripts|js|robots\.txt|favicon\.ico)
-        RewriteRule ^(.*)$ /index.php/$1 [L]
-    </Directory>
-</VirtualHost>`
+    <VirtualHost *:80>
+        DocumentRoot /some/place/to/have/storyprinter/public
+        ServerName www.your.url 
+        <Directory "/some/place/to/have/storyprinter/public">
+            Options FollowSymLinks
+            AllowOverride FileInfo	     
+            RewriteEngine On
+            RewriteCond $1 !^(index\.php|css|img|images|fckeditor|scripts|js|robots\.txt|favicon\.ico)
+            RewriteRule ^(.*)$ /index.php/$1 [L]
+            </Directory>
+        </VirtualHost>
 
 Then put everything in /some/place/to/have/storyprinter/ and you should be good to go
