@@ -4,4 +4,8 @@ $(document).ready(function() {
            window.location = '/stories/clear'
        }
    });
- });
+   
+   $('#message_slider')
+   
+   $('#error_slider')
+});

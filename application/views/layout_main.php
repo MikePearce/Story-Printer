@@ -43,5 +43,11 @@
             </div>
         </div>
     </div>
+    <div id="message_slider" class="slider">
+        <?echo $message; ?>
+    </div>
+    <div id="error_slider" class="slider">
+        <?echo $error; ?>
+    </div>
 </body>
 </html>

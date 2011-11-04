@@ -36,4 +36,4 @@ This is based on codeigniter, so, create yourself a vhost:
             </Directory>
         </VirtualHost>
 
-Then put everything in /some/place/to/have/storyprinter/ and you should be good to go
+Then put everything in `/some/place/to/have/storyprinter/` and you should be good to go

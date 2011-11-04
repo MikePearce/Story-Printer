@@ -224,3 +224,6 @@ ul.navigation li {
 .info a {
     color: lightgreen;
 }
+.slider {
+    display: none;
+}
