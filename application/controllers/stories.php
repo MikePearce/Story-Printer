@@ -46,47 +46,8 @@ class Stories extends CI_Controller {
     		}
     		// Successful upload
     		else {
-    		    // Get info
-    			$upload_data = $this->upload->data();
-    			
-    			// CSV fields
-    			$csv_fields = array(
-    			    "id",
-    			    "story",
-    			    "cos",
-    			    "stakeholder",
-    			    "effort",
-    			    "status",
-    			    "type",
-    			    "sprint",
-    			    "release"
-    			);
-    			
-    			// Open and read
-    			$ignored = FALSE;
-    			$row = 0;
-                if (($handle = fopen($upload_data['full_path'], "r")) !== FALSE) {
-                    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                        
-                        // ignore the first row?
-                        if ($this->input->post('ignore_first_row') AND !$ignored) {
-                            $ignored = TRUE;
-                            continue;
-                        }
-
-                        for($i = 0; $i < count($data); $i++) {
-                            $this->data->stories[$row][$csv_fields[$i]] = $data[$i];   
-                        }
-                        $row++;
-                        $i = 0;
-                    }
-                }
-                
-    			// All done? Delete the file and 
-    			unlink($upload_data['full_path']);
-    			
-    			$_SESSION['stories'] = $this->data->stories;
-    			
+    		    
+    		    $this->_convertStories($this->upload->data());
     			redirect('stories/view');
     			
     		}
@@ -114,7 +75,70 @@ class Stories extends CI_Controller {
 	{
 	    $_SESSION['stories'] = null;
 	    redirect('stories');
-	}	
+	}
+	
+	/**
+	 * Given the data about the file, read it and create the session array of
+	 * stories
+	 * @param $upload_data array - Contains data about the uploaded file
+	 **/	 
+	private function _convertStories($upload_data)	
+	{
+	    // Get info
+		$upload_data = $this->upload->data();
+		
+		// CSV fields
+		$csv_fields = array(
+		    "id",
+		    "story",
+		    "cos",
+		    "stakeholder",
+		    "effort",
+		    "status",
+		    "type",
+		    "sprint",
+		    "release"
+		);
+		
+		// Open and read
+		$ignored = FALSE;
+		$row = 0;
+        if (($handle = fopen($upload_data['full_path'], "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                
+                // Check the columns
+                $this->data->errors[] = 'It seems you don`\t have enough columns.`';
+                
+                // ignore the first row?
+                if ($this->input->post('ignore_first_row') AND !$ignored) {
+                    $ignored = TRUE;
+                    continue;
+                }
+
+                for($i = 0; $i < count($data); $i++) {
+                    $_SESSION['stories'][$row][$csv_fields[$i]] = $data[$i];   
+                }
+                $row++;
+                $i = 0;
+            }    	
+            	
+            // Hooray!
+            $ret = TRUE;
+        }
+        // We couldnt read it!
+        else {
+            // Throw error
+            $this->data->errors[] = 'Cannot open the uploaded file, try again';
+            $ret = FALSE;
+        }
+        
+		// All done? Delete the file and 
+		unlink($upload_data['full_path']);
+		
+		// Fin.
+		return $ret;
+		
+	}
 }
 
 /* End of file welcome.php */
