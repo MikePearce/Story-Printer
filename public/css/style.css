@@ -1,0 +1,226 @@
+/*------------------------------------*\
+  RESET
+\*------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0b1 | 201101
+   NOTE:WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{
+  display:block;
+}
+body{
+  line-height:1;
+}
+ol,ul{
+  list-style:none;
+}
+blockquote,q{
+  quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before,q:after{
+  content:'';
+  content:none;
+}
+/* remember to define visible focus styles!
+:focus{
+  outline:?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins{
+  text-decoration:none;
+}
+del{
+  text-decoration:line-through;
+}
+
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }
+
+.clearfix {display: inline-block;}  /* for IE/Mac */
+/*------------------------------------*\
+  MAIN
+\*------------------------------------*/
+/* GO! */
+body
+{
+    font-family: georgia;
+    font-size: 14px;
+    color: #000;
+}
+#constraint {
+    width: 900px;
+    margin: auto;
+}
+#header {
+    border-bottom: 1px solid #000;
+    width: 98%;
+    margin: 10px;
+    height: 50px;
+}
+#header_title {
+    float: left;
+    display: block;
+}
+#header_nav {
+    float: right;
+    display: block;
+    margin-top: 15px;
+}
+#header_nav li {
+    margin: 0;
+}
+h1, h2, h3, h4 {
+    margin: 10px 0;
+    font-family: 'Chivo', sans-serif;
+}
+h1 {
+    font-size: 3em;
+}
+h1 a {
+    text-decoration: none;
+    color: #000;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 2em;
+}
+p {
+    margin: 10px 0 10px 0;
+    font-size: 1.2em;
+    color: #333;
+    line-height: 25px;
+}
+ul {
+    padding: 10px;
+}
+ul li {
+    list-style: disc;
+    margin-left: 20px;
+    font-size: 1.2em;
+    color: #333;
+    line-height: 25px;    
+}
+#main_content {
+    margin: 10px;
+}
+ul.navigation li {
+    display: inline;
+    list-style: none;
+}
+#content {
+    margin-top: 20px;
+}
+#content p {
+
+}
+.error {
+    padding: 10px;
+    background: red;
+    font-weight: bold;
+    color: #fff;
+}
+
+#site_description {
+    float: left;
+    width: 400px;
+    margin-right: 50px;
+}
+
+#upload {
+    float: right;
+    width: 400px;
+    font-size: 1.2em;
+    line-height: 25px;
+}
+/** STORY PAGE **/
+.story_container {
+
+}
+.story_box {
+    width: 600px;
+    height: 400px;
+    background: #fff url(/images/index_card.png) no-repeat;
+    margin: auto;
+    padding: 20px;
+    padding-top: 10px;
+    line-height: 30px;
+}
+.story_container .story_box:nth-child(3n+3) {
+    page-break-after: always;
+}
+.story_header {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+.story_body {
+    font-size: 1.4em;
+        height: 120px;
+}
+.effort {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #000;
+    font-size: 3em;
+    float: right;
+    text-align: center;
+}
+.cos {
+    line-height: 15px;
+    height: 190px;
+}
+.cos h3 {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #000;
+}
+.other {
+    line-height: 20px;
+}
+
+/** Other shizzle **/
+.info {
+    border: 1px solid #000;
+    background-color: green;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+}
+.info a {
+    color: lightgreen;
+}
