@@ -103,6 +103,9 @@ body
 #header_nav li {
     margin: 0;
 }
+em {
+    font-style: italic;
+}
 h1, h2, h3, h4 {
     margin: 10px 0;
     font-family: 'Chivo', sans-serif;
@@ -136,6 +139,16 @@ ul li {
     color: #333;
     line-height: 25px;    
 }
+dl {
+    margin: 10px;
+}
+dt {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+dd {
+    margin: 5px;
+}
 #main_content {
     margin: 10px;
 }
@@ -163,6 +176,18 @@ ul.navigation li {
 }
 
 #upload {
+    float: right;
+    width: 400px;
+    font-size: 1.2em;
+    line-height: 25px;
+}
+#csv_info {
+    float: left;
+    width: 400px;
+    margin-right: 50px;
+}
+
+#example {
     float: right;
     width: 400px;
     font-size: 1.2em;

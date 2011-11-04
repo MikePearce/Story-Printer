@@ -34,6 +34,42 @@
     </div>
 </div>
 <hr />
+<h3>CSV format</h2>
+<p>
+    Right now, for this to work, your CSV has to be in a particular format, 
+    below are the headers for each column and a short description.
+</p>
+<div id="csv_info">
+    <dl>
+        <dt>Story Number</dt>
+            <dd>A unique identifier for your story</dd>
+        <dt>User Story</dt>
+            <dd>The story itself <em>(As a [user], I need [some feature], so that I get [some value])</em></dd>
+        <dt>Acceptance criterias</dt>
+            <dd>The things that will tell you when your story is complete.</dd>
+        <dt>Stakeholders</dt>
+            <dd>The people with the money, drive and passion. Your sponsers.</dd>
+        <dt>Effort</dt>
+            <dd>The story points, or whatever effort metric you use.</dd>
+        <dt>Scope</dt>
+            <dd>Whether this was created with the backlog, or an emergent idea.</dd>
+        <dt>Status</dt>
+            <dd>Is it done?</dd>
+        <dt>Sprint</dt>
+            <dd>Which sprint did it go in?</dd>
+        <dt>Release</dt>
+            <dd>Which release is it going in?</dd>
+    </dl>
+</div>
+<div id="example">
+    <p>
+        Want it quick? <a href="example.csv" target="_blank">Download here</a>.
+    </p>
+    <p>
+        Want to copy? <a href="https://docs.google.com/spreadsheet/ccc?key=0Aiayy3JXl-sfdGdOTC1hQ196NWVMVXZLNy1Kd0dWbXc" target="_blank">Google Doc version here</a>.
+    </p>
+</div>
+    
 <!--
 <div id="pastebox" class="clearfix">
     <h2>Can't be arsed with a CSV? Paste each story in here</h2>

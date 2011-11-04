@@ -41,3 +41,10 @@
     most online tools have. In the future, this will be somewhere to 
     manage just your backlog and your stories.
 </p>
+<h2>Get in touch</h2>
+<p>
+    If you'd like to request new features, or just to get in touch and give
+    me a digital jumping chest-bump, then feel free to email me on 
+    <a href="mailto:mike@mikepearce.net">mike@mikepearce.net</a> or find me on
+    Twitter as <a href="http://twitter.com/MikePearce">MikePearce</a>.
+</p>
