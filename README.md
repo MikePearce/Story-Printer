@@ -19,3 +19,21 @@ Currently, the story printer has a very limited use. But I intend to flesh it ou
  * Some kind of column mapping, so you don't have to use an exact format of your CSVs
 
 After this, there will be more, but for me the natural progression is for a     full backlog management tool, but without the sprint backlog facet that     most online tools have. In the future, this will be somewhere to manage just your backlog and your stories.
+
+## Installation
+
+This is based on codeigniter, so, create yourself a vhost:
+
+ <VirtualHost *:80>
+         DocumentRoot /some/place/to/have/storyprinter/public
+         ServerName www.your.url 
+ 	    <Directory "/some/place/to/have/storyprinter/public">
+            	Options FollowSymLinks
+             AllowOverride FileInfo	     
+  		    RewriteEngine On
+ 		    RewriteCond $1 !^(index\.php|css|img|images|fckeditor|scripts|js|robots\.txt|favicon\.ico)
+ 			RewriteRule ^(.*)$ /index.php/$1 [L]
+ 		</Directory>
+ </VirtualHost>
+
+Then put everything in /some/place/to/have/storyprinter/ and you should be good to go

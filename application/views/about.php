@@ -16,12 +16,12 @@
 <p>
     When you upload your .csv to the site, it stores it temporarily while it 
     stores the stories in a session, then deletes the file. You can see it do 
-    this by looking at the source on github. The, your data is stored in a PHP
+    this by looking at the source on <a href="https://github.com/MikePearce/Story-Printer">github</a>. The, your data is stored in a PHP
     session which I'm not clever enough to work out how to look at (and I
     don't really want to).
 </p>
 <p>
-    Alternatively, download the source from github and install yourself locally!
+    Alternatively, download the source from <a href="https://github.com/MikePearce/Story-Printer">github</a> and install yourself locally!
 </p>
 <h2>Coming soon</h2>
 <p>
