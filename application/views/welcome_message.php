@@ -17,7 +17,6 @@
     </div>
     <div id="upload">
         <h2>Upload your CSV here</h2>
-        <?php echo $error;?>
 
         <?php echo form_open_multipart('stories/index');?>
         <input type="hidden" name="moo" value="baa" />

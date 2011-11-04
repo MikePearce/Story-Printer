@@ -6,6 +6,7 @@ class Stories extends CI_Controller {
     {
         parent::__construct();
         $this->data->title_for_layout = 'Story Printer';
+        $this->data->error = $this->data->info = '';
         $this->load->helper(array('form', 'url', 'file', 'string'));
     }
 
@@ -39,9 +40,7 @@ class Stories extends CI_Controller {
             // If the upload fails
     		if (!$this->upload->do_upload())
     		{
-    			$this->data->error = $this->upload->display_errors(
-    			    '<p class="error">', '</p>'
-    			);
+    			$this->data->error = $this->upload->display_errors('', '');
 	            $this->layout->view('welcome_message', $this->data); 
     		}
     		// Successful upload

@@ -15,6 +15,8 @@
 </head>
 <body id="home">
     <div id="constraint">
+        <div id="message_slider" class="slider"><?echo $info; ?></div>
+        <div id="error_slider" class="slider"><?echo $error; ?></div>        
         <div id="header">
             <div id="header_title" class="clearfix">
                 <h1><a href="/">Story Printer</a></h1>
@@ -43,11 +45,6 @@
             </div>
         </div>
     </div>
-    <div id="message_slider" class="slider">
-        <?echo $message; ?>
-    </div>
-    <div id="error_slider" class="slider">
-        <?echo $error; ?>
-    </div>
+
 </body>
 </html>
