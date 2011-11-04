@@ -32,7 +32,7 @@ class Stories extends CI_Controller {
 		    // Initialize the library
 	        $this->load->library('upload', 
 	            array(
-	                'upload_path' => '../uploads/',
+	                'upload_path' => '/tmp',
 	                'allowed_types' => 'csv'
 	            )
 	        );
