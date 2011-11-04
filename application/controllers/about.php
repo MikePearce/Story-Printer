@@ -6,6 +6,7 @@ class About extends CI_Controller {
     {
         parent::__construct();
         $this->data->title_for_layout = 'Story Printer > About';
+        $this->data->error = $this->data->info = '';
     }
     
     public function index()

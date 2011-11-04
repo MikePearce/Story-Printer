@@ -62,7 +62,7 @@ class Stories extends CI_Controller {
 	 */
 	public function view()
 	{
-	    $this->data->stories = $_SESSION['stories'];
+	    $this->data->stories = (isset($_SESSION['stories']) ? $_SESSION['stories'] : false);
     	$this->layout->view('stories', $this->data);
 	}
 	
@@ -72,7 +72,7 @@ class Stories extends CI_Controller {
 	 */
 	public function clear()
 	{
-	    $_SESSION['stories'] = null;
+	    $_SESSION['stories'] = array();
 	    redirect('stories');
 	}
 	
