@@ -72,7 +72,7 @@ class Stories extends CI_Controller {
 	 */
 	public function clear()
 	{
-	    $_SESSION['stories'] = array();
+	    $_SESSION['stories'] = false;
 	    redirect('stories');
 	}
 	
