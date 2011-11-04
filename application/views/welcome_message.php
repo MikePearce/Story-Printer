@@ -34,6 +34,7 @@
     </div>
 </div>
 <hr />
+<!--
 <div id="pastebox" class="clearfix">
     <h2>Can't be arsed with a CSV? Paste each story in here</h2>
     <?php echo form_open_multipart('stories/paster');?>
@@ -63,3 +64,4 @@
     <input type="submit" value="Enough! Let me print!" />
 
 </div>
+-->
