@@ -10,6 +10,6 @@ class About extends CI_Controller {
     
     public function index()
     {
-        $this->layout->view('about');
+        $this->layout->view('about', $this->data);
     }
 }
