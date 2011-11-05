@@ -2,11 +2,14 @@
 
 class Stories extends CI_Controller {
     
+    private $_numberOfColumns;
+    
     public function __construct()
     {
         parent::__construct();
         $this->data->title_for_layout = 'Story Printer';
         $this->data->error = $this->data->info = '';
+        $this->_numberOfColumns = 9;
         $this->load->helper(array('form', 'url', 'file', 'string'));
     }
 
@@ -46,9 +49,14 @@ class Stories extends CI_Controller {
     		// Successful upload
     		else {
     		    
-    		    $this->_convertStories($this->upload->data());
-    			redirect('stories/view');
-    			
+    		    // If we've got a decent CSV, then redirec to the stories
+    		    if ($this->_convertStories($this->upload->data())) {
+    		        redirect('stories/view');
+    		    }
+    		    // Otherwise, show the error.
+    		    else {
+    		        $this->layout->view('welcome_message', $this->data);
+    		    }
     		}
 		}
 		else {
@@ -62,7 +70,10 @@ class Stories extends CI_Controller {
 	 */
 	public function view()
 	{
-	    $this->data->stories = (isset($_SESSION['stories']) ? $_SESSION['stories'] : false);
+	    $this->data->stories = (isset($_SESSION['stories']) 
+	                                ? $_SESSION['stories'] 
+	                                : false
+	                            );
     	$this->layout->view('stories', $this->data);
 	}
 	
@@ -106,28 +117,35 @@ class Stories extends CI_Controller {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 
                 // Check the columns
-                $this->data->errors[] = 'It seems you don`\t have enough columns.`';
-                
-                // ignore the first row?
-                if ($this->input->post('ignore_first_row') AND !$ignored) {
-                    $ignored = TRUE;
-                    continue;
+                if (count($data) != $this->_numberOfColumns) {
+                    $this->data->error = 'Your column count is wrong, '.
+                    'check your CSV against the instructions below';
+                    $_SESSION['stories'] = false;
+                    $ret = FALSE;
+                    break;
                 }
+                else {
+                     // ignore the first row?
+                    if ($this->input->post('ignore_first_row') AND !$ignored) {
+                        $ignored = TRUE;
+                        continue;
+                    }
 
-                for($i = 0; $i < count($data); $i++) {
-                    $_SESSION['stories'][$row][$csv_fields[$i]] = $data[$i];   
+                    for($i = 0; $i < count($data); $i++) {
+                        $_SESSION['stories'][$row][$csv_fields[$i]] = strip_tags($data[$i]);
+                    }
+                    $row++;
+                    $i = 0;
+                    
+                    // Hooray!
+                    $ret = TRUE;
                 }
-                $row++;
-                $i = 0;
             }    	
-            	
-            // Hooray!
-            $ret = TRUE;
         }
         // We couldnt read it!
         else {
             // Throw error
-            $this->data->errors[] = 'Cannot open the uploaded file, try again';
+            $this->data->error = 'Cannot open the uploaded file, try again';
             $ret = FALSE;
         }
         
