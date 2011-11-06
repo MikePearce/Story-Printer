@@ -14,20 +14,17 @@
         <div class="story_header">
         </div>
         <div class="story_body">
-            <div class="effort">
-                <?= $story['effort']; ?>
-            </div>
-            
-            <?= $story['story']?>
+            <div class="effort edit"><?= $story['effort']; ?></div>
+            <span class="edit"><?= $story['story']?></span>
         </div>
         <hr />
-        <div class="cos">
+        <div class="cos edit">
             <?= nl2br($story['cos']);?>
         </div>
         <div class="other">
-            <b>Stakeholder:</b> <?= $story['stakeholder']; ?> |
-            <b>Release:</b> <?= $story['release']; ?> |
-            <b>Sprint:</b> <?= $story['sprint']; ?>
+            <b>Stakeholder:</b> <span class="edit"><?= $story['stakeholder']; ?></span> |
+            <b>Release:</b> <span class="edit"><?= $story['release']; ?></span> |
+            <b>Sprint:</b> <span class="edit"><?= $story['sprint']; ?></span>
         </div>
     </div>
 </div>
