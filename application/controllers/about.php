@@ -11,6 +11,9 @@ class About extends CI_Controller {
     
     public function index()
     {
+        $filename = '../uploads/numberofuploads.txt';
+	    $this->data->uploads = file_get_contents($filename);
+        
         $this->layout->view('about', $this->data);
     }
 }

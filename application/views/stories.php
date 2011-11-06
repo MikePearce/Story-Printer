@@ -34,7 +34,7 @@
 <? 
         $no++;
         if ($no == 3) {
-            ?> <div class="page_break"></div> <?
+            ?> <div class="page_break"> - </div> <?
             $no = 0;
         }
         endforeach; 

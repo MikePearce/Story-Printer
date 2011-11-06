@@ -12,6 +12,10 @@
     your teams work well together and you're also suffering from writers
     cramp when duplicating work to cards, then maybe you'll find this useful.
 </p>
+<p>
+    So far, there have been <?= $uploads; ?> .CSVs uploaded to the Story
+    Printer!
+</p>
 <h2>Security</h2>
 <p>
     When you upload your .csv to the site, it stores it temporarily while it 
