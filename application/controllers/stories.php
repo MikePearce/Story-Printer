@@ -51,6 +51,22 @@ class Stories extends CI_Controller {
     		    
     		    // If we've got a decent CSV, then redirec to the stories
     		    if ($this->_convertStories($this->upload->data())) {
+    		        
+    		        $filename = '../uploads/numberofuploads.txt';
+    		        $contents = file_get_contents($filename);
+    		        
+    		        // Record the upload
+    		        if ($han = fopen($filename, 'w+'))
+    		        {
+    		            $contents++;
+    		            fwrite($han, $contents);
+    		            fclose($filename);
+    		        }
+    		        else {
+    		            die('unable to open');
+    		        }
+    		        
+    		        // Then show the stories
     		        redirect('stories/view');
     		    }
     		    // Otherwise, show the error.
