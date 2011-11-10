@@ -101,6 +101,23 @@ class Stories extends CI_Controller {
 	}
 	
 	/**
+	 * Receives post from jeditable
+	 */
+	public function edit()
+	{
+        if ($id = $this->input->post('id')) {
+            list($type, $index) = explode("_", $id);
+            $_SESSION['stories'][$index][$type] = $this->input->post('value');
+            echo preg_replace("%\n%", "<br />", $this->input->post('value'));
+//            echo str_replace("\n", "", nl2br($this->input->post('value')));
+        }
+        else {
+            redirec('stories/view');
+        }
+        
+	}
+	
+	/**
 	 * Given the data about the file, read it and create the session array of
 	 * stories
 	 * @param $upload_data array - Contains data about the uploaded file

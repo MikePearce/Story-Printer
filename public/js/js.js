@@ -14,6 +14,22 @@ $(document).ready(function() {
     }
     
     // Jeditable stuff
-    $('.edit').editable('http://example.com/stories/edit');
-
+    $('.edit').editable('/stories/edit', {
+        cssclass    : 'edit_input_class',
+        submit      : 'OK',
+        style       : 'inherit'
+    });
+    $('.edit_area').editable('/stories/edit', {
+        type        : 'textarea',
+        cssclass    : 'edit_area_class',
+        submit      : 'OK',
+        style       : 'inherit',
+        data        : function(value, settings) {
+             /* Convert <br> to newline. */
+            var retval = value.replace(/\n/gi, '');
+            retval = value.replace(/<br[\s\/]?>/gi, '\n');
+             return retval;
+           }
+    });
+        
 });
