@@ -62,10 +62,7 @@ class Stories extends CI_Controller {
     		            fwrite($han, $contents);
     		            fclose($filename);
     		        }
-    		        else {
-    		            die('unable to open');
-    		        }
-    		        
+
     		        // Then show the stories
     		        redirect('stories/view');
     		    }
