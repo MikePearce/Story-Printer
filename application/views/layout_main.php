@@ -25,7 +25,7 @@
             <div id="header_nav">
                 <ul class="navigation">
                     <li><a href='/'>home</a> |</li>                       
-<!--                    <li><a href='/stories/add'>manual entry</a> |</li>-->
+                    <li><a href='/stories/add'>add story manually</a> |</li>
                     <li><a href='/stories/view'>view my stories</a> |</li>
                     <li><a href='/about'>about</a></li>
                 </ul>

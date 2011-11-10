@@ -121,20 +121,26 @@ class Stories extends CI_Controller {
 	 */
 	 public function add()
 	 {
-	     array_unshift(
-	         $_SESSION['stories'], 
-             array(
-     		    "id" => '',
-     		    "story" => 'Add your story',
-     		    "cos" => 'Add your COS',
-     		    "stakeholder" => '',
-     		    "effort" => '0',
-     		    "status" => '',
-     		    "type" => '',
-     		    "sprint" => '',
-     		    "release" => ''
-     		 )
-     	);
+	     // If they're new, or have cleared.
+	     if (!isset($_SESSION['stories']) OR $_SESSION['stories'] == FALSE) {
+	         $_SESSION['stories'] =  array();
+	     }
+        // Then pop one on the beginning (so it's at the top)
+        array_unshift(
+            $_SESSION['stories'], 
+            array(
+                "id" => '',
+                "story" => 'Add your story',
+                "cos" => 'Add your COS',
+                "stakeholder" => '',
+                "effort" => '0',
+                "status" => '',
+                "type" => '',
+                "sprint" => '',
+                "release" => ''
+            )
+        ); 
+	    
      	redirect('stories/view');
 	 }
 	
@@ -208,6 +214,3 @@ class Stories extends CI_Controller {
 		
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
