@@ -35,7 +35,6 @@
 </p>
 <ul>
     <li>Data stored in HTML5 LocalStorage</li>
-    <li>Ability to edit the stories once they've been uploaded</li>
     <li>Some kind of column mapping, so you don't have to use an exact format
         of your CSVs</li>
 </ul>

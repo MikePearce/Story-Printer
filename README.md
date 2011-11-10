@@ -15,7 +15,7 @@ Alternatively, download the source from github and install yourself locally!
 Currently, the story printer has a very limited use. But I intend to flesh it out over the coming weeks and months with a few more features, detailed below:
 
  * Data stored in HTML5 LocalStorage
- * Ability to edit the stories once they've been uploaded</li>
+ * Ability to edit the stories once they've been uploaded - done!</li>
  * Some kind of column mapping, so you don't have to use an exact format of your CSVs
 
 After this, there will be more, but for me the natural progression is for a     full backlog management tool, but without the sprint backlog facet that     most online tools have. In the future, this will be somewhere to manage just your backlog and your stories.
@@ -37,3 +37,8 @@ This is based on codeigniter, so, create yourself a vhost:
         </VirtualHost>
 
 Then put everything in `/some/place/to/have/storyprinter/` and you should be good to go
+
+# CHANGELOG
+## 10.11.11
+ * Added ability to edit stories inline
+ * Also added manual story creation link
