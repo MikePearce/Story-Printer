@@ -231,7 +231,8 @@ ul.navigation li {
 }
 .cos {
     line-height: 15px;
-    height: 180px;
+    height: 165px;
+    margin-bottom: 15px;
 }
 .cos h3 {
     padding-bottom: 5px;
@@ -246,7 +247,7 @@ ul.navigation li {
     border: 1px solid transparent;
     
 }
-.edit_area_class {
+.edit_area_class_cos {
     height: 160px;
 }
 .edit:hover, .edit_area:hover {

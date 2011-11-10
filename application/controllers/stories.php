@@ -109,13 +109,34 @@ class Stories extends CI_Controller {
             list($type, $index) = explode("_", $id);
             $_SESSION['stories'][$index][$type] = $this->input->post('value');
             echo preg_replace("%\n%", "<br />", $this->input->post('value'));
-//            echo str_replace("\n", "", nl2br($this->input->post('value')));
         }
         else {
             redirec('stories/view');
         }
         
 	}
+	
+	/**
+	 * Add another story
+	 */
+	 public function add()
+	 {
+	     array_unshift(
+	         $_SESSION['stories'], 
+             array(
+     		    "id" => '',
+     		    "story" => 'Add your story',
+     		    "cos" => 'Add your COS',
+     		    "stakeholder" => '',
+     		    "effort" => '0',
+     		    "status" => '',
+     		    "type" => '',
+     		    "sprint" => '',
+     		    "release" => ''
+     		 )
+     	);
+     	redirect('stories/view');
+	 }
 	
 	/**
 	 * Given the data about the file, read it and create the session array of

@@ -3,8 +3,9 @@
     // First, check we have stories
     if (is_array($stories)):
 ?>
-<center><button onClick="javascript:window.print();" class="noprint">PRINT THAT SHIZZLE!</button><br />
-<a href="/stories/clear" id="clearStories">Delete all these</a></center>
+<center class="noprint"><a href="#" onClick="javascript:window.print();">Print these stories</a> | 
+<a href="/stories/clear" id="clearStories">Delete all these</a> | <a href="/stories/add">Add another story</a></center>
+<br />
 <?
         $no = 0;
         $i = 0;

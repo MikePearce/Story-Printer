@@ -30,6 +30,5 @@ $(document).ready(function() {
             retval = value.replace(/<br[\s\/]?>/gi, '\n');
              return retval;
            }
-    });
-        
+    });   
 });
