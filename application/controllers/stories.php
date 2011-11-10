@@ -61,8 +61,9 @@ class Stories extends CI_Controller {
     		            $contents++;
     		            fwrite($han, $contents);
     		            fclose($filename);
+
     		        }// Else nothing, if it doesn't work, don't kill the site!
-    		        
+
     		        // Then show the stories
     		        redirect('stories/view');
     		    }
@@ -99,6 +100,50 @@ class Stories extends CI_Controller {
 	    $_SESSION['stories'] = false;
 	    redirect('stories');
 	}
+	
+	/**
+	 * Receives post from jeditable
+	 */
+	public function edit()
+	{
+        if ($id = $this->input->post('id')) {
+            list($type, $index) = explode("_", $id);
+            $_SESSION['stories'][$index][$type] = $this->input->post('value');
+            echo preg_replace("%\n%", "<br />", $this->input->post('value'));
+        }
+        else {
+            redirec('stories/view');
+        }
+        
+	}
+	
+	/**
+	 * Add another story
+	 */
+	 public function add()
+	 {
+	     // If they're new, or have cleared.
+	     if (!isset($_SESSION['stories']) OR $_SESSION['stories'] == FALSE) {
+	         $_SESSION['stories'] =  array();
+	     }
+        // Then pop one on the beginning (so it's at the top)
+        array_unshift(
+            $_SESSION['stories'], 
+            array(
+                "id" => '',
+                "story" => 'Add your story',
+                "cos" => 'Add your COS',
+                "stakeholder" => '',
+                "effort" => '0',
+                "status" => '',
+                "type" => '',
+                "sprint" => '',
+                "release" => ''
+            )
+        ); 
+	    
+     	redirect('stories/view');
+	 }
 	
 	/**
 	 * Given the data about the file, read it and create the session array of
@@ -170,6 +215,3 @@ class Stories extends CI_Controller {
 		
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

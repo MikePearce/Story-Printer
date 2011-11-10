@@ -5,6 +5,7 @@
 	<title><?php echo $title_for_layout; ?></title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>	
+    <script type="text/javascript" src="/js/jquery.jeditable.mini.js"></script>	
     <script type="text/javascript" src="/js/js.js"></script>	
 	<link href='http://fonts.googleapis.com/css?family=Quicksand|Chivo' rel='stylesheet' type='text/css'>    
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -24,7 +25,7 @@
             <div id="header_nav">
                 <ul class="navigation">
                     <li><a href='/'>home</a> |</li>                       
-<!--                    <li><a href='/stories/add'>manual entry</a> |</li>-->
+                    <li><a href='/stories/add'>add story manually</a> |</li>
                     <li><a href='/stories/view'>view my stories</a> |</li>
                     <li><a href='/about'>about</a></li>
                 </ul>
@@ -51,7 +52,7 @@
     </script>
     <script type="text/javascript">
     try{
-        var pageTracker = _gat._getTracker("UA-xxxxxxxx");
+        var pageTracker = _gat._getTracker("UA-4192256-5");
         pageTracker._trackPageview();
     } catch(err) {}
     </script>

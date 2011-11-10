@@ -210,12 +210,16 @@ ul.navigation li {
     page-break-after: always;
 }
 .story_header {
-    font-size: 2.5em;
-    margin-bottom: 5px;
+    font-size: 1.5em;
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+.story_header span {
+    width: 100px;
 }
 .story_body {
     font-size: 1.4em;
-        height: 120px;
+        height: 100px;
 }
 .effort {
     width: 60px;
@@ -227,7 +231,8 @@ ul.navigation li {
 }
 .cos {
     line-height: 15px;
-    height: 190px;
+    height: 165px;
+    margin-bottom: 15px;
 }
 .cos h3 {
     padding-bottom: 5px;
@@ -237,7 +242,17 @@ ul.navigation li {
 .other {
     line-height: 20px;
 }
-
+.edit, .edit_area {
+    padding: 2px;
+    border: 1px solid transparent;
+    
+}
+.edit_area_class_cos {
+    height: 160px;
+}
+.edit:hover, .edit_area:hover {
+    border: 1px solid red;
+}
 /** Other shizzle **/
 .info {
     border: 1px solid #000;

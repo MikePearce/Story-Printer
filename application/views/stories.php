@@ -3,31 +3,32 @@
     // First, check we have stories
     if (is_array($stories)):
 ?>
-<center><button onClick="javascript:window.print();" class="noprint">PRINT THAT SHIZZLE!</button><br />
-<a href="/stories/clear" id="clearStories">Delete all these</a></center>
+<center class="noprint"><a href="#" onClick="javascript:window.print();">Print these stories</a> | 
+<a href="/stories/clear" id="clearStories">Delete all these</a> | <a href="/stories/add">Add another story</a></center>
+<br />
 <?
         $no = 0;
+        $i = 0;
         foreach($stories AS $story): 
 ?>
 <div class="story_container">
     <div class="story_box">
         <div class="story_header">
+            <span class="edit" id="title_<?= $i; ?>"><?= (isset($story['title']) ? $story['title'] : false);?></span>
         </div>
         <div class="story_body">
-            <div class="effort">
-                <?= $story['effort']; ?>
-            </div>
-            
-            <?= $story['story']?>
+            <div class="effort edit" id="effort_<?= $i; ?>"><?= $story['effort']; ?></div>
+            <span class="edit_area" id="story_<?= $i; ?>"><?= $story['story']?></span>
         </div>
         <hr />
-        <div class="cos">
-            <?= nl2br($story['cos']);?>
-        </div>
-        <div class="other">
-            <b>Stakeholder:</b> <?= $story['stakeholder']; ?> |
-            <b>Release:</b> <?= $story['release']; ?> |
-            <b>Sprint:</b> <?= $story['sprint']; ?>
+        <div class="cos edit_area" id="cos_<?= $i; ?>"><?= str_replace("\n", "", nl2br($story['cos'])) ;?></div>
+        <div class="other" style="display:inline;">
+            <b>Stakeholder:</b> 
+                <span class="edit" id="stakeholder_<?= $i; ?>"><?= $story['stakeholder']; ?></span> |
+            <b>Release:</b> 
+                <span class="edit" id="release_<?= $i; ?>"><?= $story['release']; ?></span> |
+            <b>Sprint:</b> 
+                <span class="edit" id="sprint_<?= $i; ?>"><?= $story['sprint']; ?></span>
         </div>
     </div>
 </div>
@@ -37,6 +38,8 @@
             ?> <div class="page_break"> - </div> <?
             $no = 0;
         }
+        
+        $i++;
         endforeach; 
     else:
 ?>
