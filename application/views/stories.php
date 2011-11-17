@@ -1,5 +1,5 @@
-
 <? 
+
     // First, check we have stories
     if (is_array($stories)):
 ?>

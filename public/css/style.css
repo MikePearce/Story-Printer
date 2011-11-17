@@ -253,6 +253,21 @@ ul.navigation li {
 .edit:hover, .edit_area:hover {
     border: 1px solid red;
 }
+/** mappings stuff **/
+#map_table thead td {
+    font-size: 1.5em;
+    background: darkgrey;
+}
+#map_table td, th {
+    padding: 10px;
+    border: 1px solid #fff;
+    background: lightgrey;
+}
+
+#map_table th {
+    text-align: right;
+    font-size: 1.2em;
+}
 /** Other shizzle **/
 .info {
     border: 1px solid #000;

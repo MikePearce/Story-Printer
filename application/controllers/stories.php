@@ -3,6 +3,7 @@
 class Stories extends CI_Controller {
     
     private $_numberOfColumns;
+    private $_fields;
     
     public function __construct()
     {
@@ -11,6 +12,18 @@ class Stories extends CI_Controller {
         $this->data->error = $this->data->info = '';
         $this->_numberOfColumns = 9;
         $this->load->helper(array('form', 'url', 'file', 'string'));
+        // CSV fields
+		$this->_fields = array(
+		    "id",
+		    "story",
+		    "cos",
+		    "stakeholder",
+		    "effort",
+		    "status",
+		    "type",
+		    "sprint",
+		    "release"
+		);
     }
 
 	/**
@@ -49,33 +62,49 @@ class Stories extends CI_Controller {
     		// Successful upload
     		else {
     		    
-    		    // If we've got a decent CSV, then redirec to the stories
-    		    if ($this->_convertStories($this->upload->data())) {
-    		        
-    		        $filename = '../uploads/numberofuploads.txt';
-    		        $contents = file_get_contents($filename);
-    		        
-    		        // Record the upload
-    		        if ($han = fopen($filename, 'w+'))
-    		        {
-    		            $contents++;
-    		            fwrite($han, $contents);
-    		            fclose($filename);
-
-    		        }// Else nothing, if it doesn't work, don't kill the site!
-
-    		        // Then show the stories
-    		        redirect('stories/view');
+    		    // Uploaded? Show them the converter
+    		    if($this->_mapAndConvert($this->upload->data()))
+    		    {
+    		        $this->layout->view('mapping', $this->data);
     		    }
-    		    // Otherwise, show the error.
-    		    else {
-    		        $this->layout->view('welcome_message', $this->data);
-    		    }
+    		    
     		}
 		}
 		else {
 		    $this->layout->view('welcome_message', $this->data); 
 		}
+	}
+	
+	/**
+	 * Once the mapping has been done, do it
+	 */
+	public function map()
+	{
+	    // OK, let's check the stuff
+	    if ($this->input->post())
+	    {
+	        // Setup the vars and empty the old stories
+	        $new_stories = array();
+	        $user_stories = $_SESSION['stories'];
+	        $_SESSION['stories'] = false;
+	        
+	        // For each story...
+	        foreach($user_stories AS $story) {
+
+                // Iterate through OUR fields and assign THEIR field values
+	            foreach($this->_fields AS $field) {
+                    $new[$field] = $story[$this->input->post($field)];
+    	        }
+    	        // Store the new stories
+	            $_SESSION['stories'][] = $new;
+	        }
+	        
+	        // Then head to the view.
+	        redirect('stories/view');
+	    }
+	    else {
+	        redirect('stories');
+	    }
 	}
 	
 	/**
@@ -144,74 +173,52 @@ class Stories extends CI_Controller {
 	    
      	redirect('stories/view');
 	 }
-	
-	/**
-	 * Given the data about the file, read it and create the session array of
-	 * stories
-	 * @param $upload_data array - Contains data about the uploaded file
-	 **/	 
-	private function _convertStories($upload_data)	
-	{
-	    // Get info
-		$upload_data = $this->upload->data();
-		
-		// CSV fields
-		$csv_fields = array(
-		    "id",
-		    "story",
-		    "cos",
-		    "stakeholder",
-		    "effort",
-		    "status",
-		    "type",
-		    "sprint",
-		    "release"
-		);
-		
-		// Open and read
-		$ignored = FALSE;
-		$row = 0;
-        if (($handle = fopen($upload_data['full_path'], "r")) !== FALSE) {
+	 
+	 /**
+	  * Given the data in the file, show a page which allows them to
+	  * map their columns
+	  * @param $upload_data - Contains the PHP upload data of the file
+	  */
+	 private function _mapAndConvert($upload_data) {
+	     
+	     $_SESSION = FALSE;
+	     
+         // First, create an array that shows the mappings
+         $row = 0;
+         $first_row = FALSE;
+         if (($handle = fopen($upload_data['full_path'], "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                
-                // Check the columns
-                if (count($data) != $this->_numberOfColumns) {
-                    $this->data->error = 'Your column count is wrong, '.
-                    'check your CSV against the instructions below';
-                    $_SESSION['stories'] = false;
-                    $ret = FALSE;
-                    break;
-                }
-                else {
-                     // ignore the first row?
-                    if ($this->input->post('ignore_first_row') AND !$ignored) {
-                        $ignored = TRUE;
-                        continue;
-                    }
 
-                    for($i = 0; $i < count($data); $i++) {
-                        $_SESSION['stories'][$row][$csv_fields[$i]] = strip_tags($data[$i]);
-                    }
-                    $row++;
-                    $i = 0;
-                    
-                    // Hooray!
-                    $ret = TRUE;
+                // So, the first row should contain headers pull them out
+                // and store them
+                if (!$first_row) {
+                    $csv_fields = array_map('strip_tags', $data);
+                    $this->data->user_fields = $csv_fields;
+                    $first_row = TRUE;
+                    continue;
                 }
-            }    	
+                
+                // Fill'er up
+                $new_rows = array_map('strip_tags', $data);
+                $_SESSION['stories'][] = array_combine($csv_fields, $new_rows);
+            }
+            
+            // Now we have our csv stored, let's see how it fares against
+            // what we want
+            $this->data->fields = $this->_fields;
+            
+            // All done? Delete the file
+            fclose($handle);
+    		unlink($upload_data['full_path']);
+    		
+    		return TRUE;
         }
         // We couldnt read it!
         else {
             // Throw error
             $this->data->error = 'Cannot open the uploaded file, try again';
-            $ret = FALSE;
+            return FALSE;
         }
-        
-		// All done? Delete the file and 
-		unlink($upload_data['full_path']);
-		
-		// Fin.
-		return $ret;
-		
-	}
+        	     
+	 }	 
 }
