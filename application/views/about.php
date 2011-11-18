@@ -34,9 +34,7 @@
     below:
 </p>
 <ul>
-    <li>Data stored in HTML5 LocalStorage</li>
-    <li>Some kind of column mapping, so you don't have to use an exact format
-        of your CSVs</li>
+    <li>Data stored in HTML5 LocalStorage (for more security for you and persistence)</li>
 </ul>
 <p>
     After this, there will be more, but for me the natural progression is for a

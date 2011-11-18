@@ -10,7 +10,9 @@
         <? foreach($fields AS $field) : ?>
           <tr>
               <th><?= ucfirst($field); ?></th>
-              <td><select name="<?= $field; ?>">
+              <td>
+                  <select name="<?= $field; ?>">
+                      <option value="">--</option>
                   <? 
                         $index = similar_field($field, $user_fields);
                         foreach($user_fields AS $field):

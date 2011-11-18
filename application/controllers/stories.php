@@ -14,7 +14,6 @@ class Stories extends CI_Controller {
         $this->load->helper(array('form', 'url', 'file', 'string'));
         // CSV fields
 		$this->_fields = array(
-		    "id",
 		    "story",
 		    "cos",
 		    "stakeholder",
@@ -84,7 +83,7 @@ class Stories extends CI_Controller {
 	    if ($this->input->post())
 	    {
 	        // Setup the vars and empty the old stories
-	        $new_stories = array();
+	        $new_stories = $new = array();
 	        $user_stories = $_SESSION['stories'];
 	        $_SESSION['stories'] = false;
 	        
@@ -94,9 +93,18 @@ class Stories extends CI_Controller {
                 // Iterate through OUR fields and assign THEIR field values
 	            foreach($this->_fields AS $field) {
                     $new[$field] = $story[$this->input->post($field)];
+                    if (
+                        ($field == 'estimate' && $new[$field] == '') 
+                         OR
+                         $field == 'status' && (strtolower($new[$field]) == 'done' OR strtolower($new[$field]) != 'ready')
+                       )
+                    {
+                        continue 2;
+                    }
     	        }
     	        // Store the new stories
 	            $_SESSION['stories'][] = $new;
+	            $new = array();
 	        }
 	        
 	        // Then head to the view.
@@ -124,10 +132,18 @@ class Stories extends CI_Controller {
 	 * Clear the stories from the session
 	 * @return void
 	 */
-	public function clear()
+	public function clear($id = false)
 	{
-	    $_SESSION['stories'] = false;
-	    redirect('stories');
+	    if ($id === false) {
+    	    $_SESSION['stories'] = false;
+    	    redirect('stories');	        
+	    }
+	    else {
+	        $_SESSION['stories'][$id] = false;
+	        unset($_SESSION['stories'][$id]);
+	        redirect('stories/view/'. $id);
+	    }
+
 	}
 	
 	/**
@@ -141,7 +157,7 @@ class Stories extends CI_Controller {
             echo preg_replace("%\n%", "<br />", $this->input->post('value'));
         }
         else {
-            redirec('stories/view');
+            redirect('stories/view');
         }
         
 	}
@@ -200,7 +216,7 @@ class Stories extends CI_Controller {
                 
                 // Fill'er up
                 $new_rows = array_map('strip_tags', $data);
-                $_SESSION['stories'][] = array_combine($csv_fields, $new_rows);
+                $_SESSION['stories'][] = @array_combine($csv_fields, $new_rows);
             }
             
             // Now we have our csv stored, let's see how it fares against

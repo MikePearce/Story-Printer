@@ -9,7 +9,7 @@
 <?
         $no = 0;
         $i = 0;
-        foreach($stories AS $story): 
+        foreach($stories AS $id => $story): 
 ?>
 <div class="story_container">
     <div class="story_box">
@@ -28,7 +28,8 @@
             <b>Release:</b> 
                 <span class="edit" id="release_<?= $i; ?>"><?= $story['release']; ?></span> |
             <b>Sprint:</b> 
-                <span class="edit" id="sprint_<?= $i; ?>"><?= $story['sprint']; ?></span>
+                <span class="edit" id="sprint_<?= $i; ?>"><?= $story['sprint']; ?></span> |
+            <a href="/stories/clear/<?= $id; ?>">Delete Me</a>
         </div>
     </div>
 </div>

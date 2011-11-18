@@ -19,15 +19,15 @@
         <h2>Upload your CSV here</h2>
 
         <?php echo form_open_multipart('stories/index');?>
+        <p>
+            <em>Note: stories that have a status of 'ready' will be imported.
+                Everything else will be ignored.</em>
+        </p>
         <input type="hidden" name="moo" value="baa" />
-
         <label for="userfile">Your list of stories:</label>
         <br />
         <input type="file" name="userfile" size="20" />
         <br /><br />
-        <label for="ignore_first_row">Ignore the first row:</label>
-        <input type="checkbox" name="ignore_first_row" id="ignore_first_row" value="1" />
-        <br />    <br />
         <input type="submit" value="Upload that shizzle!" />
 
         </form>    
@@ -36,8 +36,9 @@
 <hr />
 <h3>CSV format</h2>
 <p>
-    Right now, for this to work, your CSV has to be in a particular format, 
-    below are the headers for each column and a short description.
+    You no longer need to use specific columns in your CSV. As long as it has 
+    column headings, you can now map your own to StoryPrinters. Below are
+    explanations of the parts of the cards you'll see when you upload.
 </p>
 <div id="csv_info">
     <dl>
@@ -62,6 +63,10 @@
     </dl>
 </div>
 <div id="example">
+    <p>
+        If you want to see examples of product backlogs which will work with
+        the StoryPrinter, you can use these.
+    </p>
     <p>
         Want it quick? <a href="example.csv" target="_blank">Download here</a>.
     </p>
