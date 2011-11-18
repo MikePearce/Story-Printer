@@ -25,6 +25,15 @@
           </tr>
         <? endforeach; ?>
         <tr>
+            <td colspan="2" align="right">
+                <label for="status_ready">Import only 'ready' stories</label>
+                <input type="checkbox" name="status_ready" id="status_ready" value="1" />
+                <br />
+                <label for="status_done">Exclude 'done' stories</label>
+                <input type="checkbox" name="status_done" id="status_done" value="1" />
+            </td>
+        </tr>
+        <tr>
             <td colspan="2"><input type="submit" name="submit" id="submit_map" /></td>
         </tr>
     </table>

@@ -93,20 +93,27 @@ class Stories extends CI_Controller {
                 // Iterate through OUR fields and assign THEIR field values
 	            foreach($this->_fields AS $field) {
                     $new[$field] = $story[$this->input->post($field)];
-                    if (
-                        ($field == 'estimate' && $new[$field] == '') 
-                         OR
-                         $field == 'status' && (strtolower($new[$field]) == 'done' OR strtolower($new[$field]) != 'ready')
-                       )
-                    {
-                        continue 2;
+                    
+                    // Do we want to skip this
+                    if ($field == 'status') {
+                        //What status are we looking for?
+                        if ($this->input->post('status_done') == 1 AND strtolower($new[$field]) == 'done') {
+                            continue 2;
+                        }
+                        if ($this->input->post('status_ready') == 1 AND strtolower($new[$field]) != 'ready') {
+                            continue 2;
+                        }
                     }
+                    
     	        }
-    	        // Store the new stories
-	            $_SESSION['stories'][] = $new;
-	            $new = array();
+    	        
+    	        // Check it's a useful story
+    	        if ($new['effort'] AND $new['story'] AND $new['cos']) {
+        	        // Store the new stories
+    	            $_SESSION['stories'][] = $new;
+    	        }
+    	        $new = array();
 	        }
-	        
 	        // Then head to the view.
 	        redirect('stories/view');
 	    }
