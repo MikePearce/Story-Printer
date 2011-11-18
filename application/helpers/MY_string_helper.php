@@ -38,7 +38,24 @@ if ( ! function_exists('similar_field'))
     	    
     	}
     	
-    	return $user_fields[$index];
+    	// Did we get exact?
+    	if ($shortest <= 1) {
+    	    return $user_fields[$index];
+    	}
+    	// No? All hope is not lost, let's try something else
+    	else {
+    	    // Let's set up some useful ones.
+            switch($our_field) {
+                case 'cos':
+                    return similar_field('acceptance criteria', $user_fields);
+                break;
+                case 'story':
+                    return similar_field('user story', $user_fields);
+                break;
+            }
+        	
+    	}
+
 
 	}
 }
