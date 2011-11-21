@@ -55,7 +55,7 @@
         <dt>Scope</dt>
             <dd>Whether this was created with the backlog, or an emergent idea.</dd>
         <dt>Status</dt>
-            <dd>Is it done?</dd>
+            <dd>Is it done or ready? (Add 'ready' to this column to be able to import only ready stories. Add 'done' to be able to ignore these when you import.)</dd>
         <dt>Sprint</dt>
             <dd>Which sprint did it go in?</dd>
         <dt>Release</dt>
