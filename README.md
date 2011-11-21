@@ -15,8 +15,8 @@ Alternatively, download the source from github and install yourself locally!
 Currently, the story printer has a very limited use. But I intend to flesh it out over the coming weeks and months with a few more features, detailed below:
 
  * Data stored in HTML5 LocalStorage
- * Ability to edit the stories once they've been uploaded - done!</li>
- * Some kind of column mapping, so you don't have to use an exact format of your CSVs
+ * Ability to edit the stories once they've been uploaded - done!
+ * Some kind of column mapping, so you don't have to use an exact format of your CSVs - done!
 
 After this, there will be more, but for me the natural progression is for a     full backlog management tool, but without the sprint backlog facet that     most online tools have. In the future, this will be somewhere to manage just your backlog and your stories.
 
