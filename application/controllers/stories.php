@@ -90,9 +90,17 @@ class Stories extends CI_Controller {
 	        // For each story...
 	        foreach($user_stories AS $story) {
 
+
                 // Iterate through OUR fields and assign THEIR field values
 	            foreach($this->_fields AS $field) {
-                    $new[$field] = $story[$this->input->post($field)];
+	                
+	                // We might have a non-mapped field, if so, who cares?
+                    if($this->input->post($field) == '') {
+                        $new[$field] = false;
+                    }
+                    else {
+                        $new[$field] = $story[$this->input->post($field)];
+                    }
                     
                     // Do we want to skip this
                     if ($field == 'status') {
@@ -113,7 +121,9 @@ class Stories extends CI_Controller {
     	            $_SESSION['stories'][] = $new;
     	        }
     	        $new = array();
+    	        
 	        }
+
 	        // Then head to the view.
 	        redirect('stories/view');
 	    }
@@ -204,7 +214,7 @@ class Stories extends CI_Controller {
 	  */
 	 private function _mapAndConvert($upload_data) {
 	     
-	     $_SESSION = FALSE;
+	     $_SESSION = $ret = FALSE;
 	     
          // First, create an array that shows the mappings
          $row = 0;
@@ -220,10 +230,10 @@ class Stories extends CI_Controller {
                     $first_row = TRUE;
                     continue;
                 }
-                
+
                 // Fill'er up
                 $new_rows = array_map('strip_tags', $data);
-                $_SESSION['stories'][] = @array_combine($csv_fields, $new_rows);
+                $_SESSION['stories'][] = @array_combine($csv_fields, array_pad($new_rows, count($csv_fields), ''));
             }
             
             // Now we have our csv stored, let's see how it fares against
@@ -233,15 +243,16 @@ class Stories extends CI_Controller {
             // All done? Delete the file
             fclose($handle);
     		unlink($upload_data['full_path']);
-    		
-    		return TRUE;
+
+    		$ret = TRUE;
         }
         // We couldnt read it!
         else {
             // Throw error
             $this->data->error = 'Cannot open the uploaded file, try again';
-            return FALSE;
         }
+        
+        return $ret;
         	     
 	 }	 
 }

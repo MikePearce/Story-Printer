@@ -29,7 +29,7 @@
                 <span class="edit" id="release_<?= $i; ?>"><?= $story['release']; ?></span> |
             <b>Sprint:</b> 
                 <span class="edit" id="sprint_<?= $i; ?>"><?= $story['sprint']; ?></span> |
-            <a href="/stories/clear/<?= $id; ?>">Delete Me</a>
+            <a href="/stories/clear/<?= $id; ?>" class="noprint">Delete Me</a>
         </div>
     </div>
 </div>
