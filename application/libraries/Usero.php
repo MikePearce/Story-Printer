@@ -13,9 +13,9 @@ class Usero {
         
         if (!isset($_SESSION['user'])) {
             // Setup the user
-            $this->iterations = 'Sprint';
-            $this->releases = 'Release';
-            $this->stakeholders = 'Stakeholder';            
+            $this->iterations = $_SESSION['user']['settings']['iterations'] = 'Sprint';
+            $this->releases = $_SESSION['user']['settings']['releases'] = 'Release';
+            $this->stakeholders = $_SESSION['user']['settings']['stakeholders'] = 'Stakeholder';            
         }
         else {
             // Setup the user
