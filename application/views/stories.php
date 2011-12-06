@@ -54,3 +54,7 @@
 <?
   endif;
 ?>
+<div id="catfish">
+    <img src="/images/cool_story.png" />
+    <!-- <a href="#" id="close-link">Close</a> -->
+</div>

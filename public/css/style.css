@@ -299,3 +299,16 @@ ul.navigation li {
     background-color: red;
     color: #fff;
 }
+
+/** CATFISH **/
+div#catfish {
+	display: none; /* Stops catfish appearing before the page is fully loaded */
+	text-align: right;
+
+}
+div#catfish a#close-link {
+	position: absolute;
+	top: 5px;
+	right: 15px;
+	color: black;
+}

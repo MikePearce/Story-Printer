@@ -29,6 +29,16 @@ $(document).ready(function() {
             var retval = value.replace(/\n/gi, '');
             retval = value.replace(/<br[\s\/]?>/gi, '\n');
              return retval;
-           }
-    });   
+           },
+        callback : function(value, settings) {
+            $('#catfish').catfish({
+            	animation: 'slide',
+            	closeLink: '#close-link',
+            	height: 404,
+            	sink: 1000
+            });
+        }
+    });
+       
+
 });

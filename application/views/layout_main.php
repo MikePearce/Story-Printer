@@ -7,6 +7,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>	
     <script type="text/javascript" src="/js/jquery.jeditable.mini.js"></script>	
     <script type="text/javascript" src="/js/js.js"></script>	
+    <script type="text/javascript" src="/js/jquery.catfish.js"></script>	
 	<link href='http://fonts.googleapis.com/css?family=Quicksand|Chivo' rel='stylesheet' type='text/css'>    
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
