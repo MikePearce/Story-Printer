@@ -18,7 +18,7 @@
         </div>
         <div class="story_body">
             <div class="effort edit" id="effort_<?= $i; ?>"><?= $story['effort']; ?></div>
-            <span class="edit_area" id="story_<?= $i; ?>"><?= $story['story']?></span>
+            <span class="story_edit edit_area" id="story_<?= $i; ?>"><?= $story['story']?></span>
         </div>
         <hr />
         <div class="cos edit_area" id="cos_<?= $i; ?>"><?= str_replace("\n", "", nl2br($story['cos'])) ;?></div>

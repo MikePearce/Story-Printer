@@ -28,6 +28,7 @@
                     <li><a href='/'>home</a> |</li>                       
                     <li><a href='/stories/add'>add story manually</a> |</li>
                     <li><a href='/stories/view'>view my stories</a> |</li>
+                    <li><a href='/user/settings'>settings</a> |</li>
                     <li><a href='/about'>about</a></li>
                 </ul>
             </div>

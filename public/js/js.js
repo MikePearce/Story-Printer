@@ -39,6 +39,12 @@ $(document).ready(function() {
             });
         }
     });
+    
+    $('.edit_settings').editable('/user/savesettings', {
+        cssclass    : 'edit_input_class',
+        submit      : 'OK',
+        style       : 'inherit'
+    });
        
 
 });

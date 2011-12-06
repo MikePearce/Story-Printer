@@ -221,6 +221,11 @@ ul.navigation li {
     font-size: 1.4em;
         height: 100px;
 }
+.story_edit {
+    height: 105px;
+    display: block;
+    width: 500px;
+}
 .effort {
     width: 60px;
     height: 60px;
@@ -245,10 +250,13 @@ ul.navigation li {
 .edit, .edit_area {
     padding: 2px;
     border: 1px solid transparent;
-    
+
 }
 .edit_area_class_cos {
     height: 160px;
+}
+.edit_area_class_story {
+    height: 1o0px;
 }
 .edit:hover, .edit_area:hover {
     border: 1px solid red;
@@ -299,7 +307,9 @@ ul.navigation li {
     background-color: red;
     color: #fff;
 }
-
+span.edit_settings {
+        border-bottom: 1px solid red;
+}
 /** CATFISH **/
 div#catfish {
 	display: none; /* Stops catfish appearing before the page is fully loaded */
