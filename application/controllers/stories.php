@@ -142,6 +142,7 @@ class Stories extends CI_Controller {
 	                                ? $_SESSION['stories'] 
 	                                : false
 	                            );
+	    $this->data->settings = $this->usero->getSettings();
     	$this->layout->view('stories', $this->data);
 	}
 	

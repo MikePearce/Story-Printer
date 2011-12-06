@@ -12,11 +12,10 @@ class Usero {
     public function __construct() {
         
         if (!isset($_SESSION['user'])) {
-            print 'moo';
             // Setup the user
-            $this->iterations = 'sprint';
-            $this->releases = 'release';
-            $this->stakeholders = 'stakeholder';            
+            $this->iterations = 'Sprint';
+            $this->releases = 'Release';
+            $this->stakeholders = 'Stakeholder';            
         }
         else {
             // Setup the user

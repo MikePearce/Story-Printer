@@ -23,11 +23,11 @@
         <hr />
         <div class="cos edit_area" id="cos_<?= $i; ?>"><?= str_replace("\n", "", nl2br($story['cos'])) ;?></div>
         <div class="other" style="display:inline;">
-            <b>Stakeholder:</b> 
+            <b><?= $settings['stakeholders']; ?>:</b> 
                 <span class="edit" id="stakeholder_<?= $i; ?>"><?= $story['stakeholder']; ?></span> |
-            <b>Release:</b> 
+            <b><?= $settings['releases']; ?>:</b> 
                 <span class="edit" id="release_<?= $i; ?>"><?= $story['release']; ?></span> |
-            <b>Sprint:</b> 
+            <b><?= $settings['iterations']; ?>:</b> 
                 <span class="edit" id="sprint_<?= $i; ?>"><?= $story['sprint']; ?></span> |
             <a href="/stories/clear/<?= $id; ?>" class="noprint">Delete Me</a>
         </div>
