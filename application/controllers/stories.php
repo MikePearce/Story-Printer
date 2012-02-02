@@ -146,21 +146,33 @@ class Stories extends CI_Controller {
 	                                : false
 	                            );
 	    $this->data->settings = $this->usero->getSettings();
-	    // Simple view, or what?
-	    if ($view_style == 'simple') {
-	        $template = 'simple';
-	        $this->data->template = 'card';
+	    
+	    // If there are no stories, show an error
+	    if ($this->data->stories == false) {
+    	    $this->data->stories = $this->load->view('snippets/nostories.php', 
+    	        $this->data, true
+    	    );
+    	    
+    	    $this->data->template = 'simple';
 	    }
 	    else {
-	        $template = 'card';
-	        $this->data->template = 'simple';
+    	    // Simple view, or what?
+    	    if ($view_style == 'simple') {
+    	        $template = 'simple';
+    	        $this->data->template = 'card';
+    	    }
+    	    else {
+    	        $template = 'card';
+    	        $this->data->template = 'simple';
+    	    }
+
+    	    // Return the view with the correct snippet
+    	    $this->data->stories = $this->load->view(
+    	        'snippets/story_'. $template .'.php', 
+    	        $this->data, true
+    	    );
+	        
 	    }
-	    
-	    // Return the view with the correct snippet
-	    $this->data->stories = $this->load->view(
-	        'snippets/story_'. $this->data->template .'.php', 
-	        $this->data, true
-	    );
     	$this->layout->view('stories', $this->data);
 	}
 	

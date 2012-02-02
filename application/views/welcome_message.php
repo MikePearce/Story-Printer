@@ -73,36 +73,23 @@
     <p>
         Want to copy? <a href="https://docs.google.com/spreadsheet/ccc?key=0Aiayy3JXl-sfdGdOTC1hQ196NWVMVXZLNy1Kd0dWbXc" target="_blank">Google Doc version here</a>.
     </p>
+    <p>&nbsp;</p>
+    <h2>Subscribe</h2>
+    <p>
+        Get informed of updates to the application and other news from Mike by subscribing to the newsletter.
+    <p>
+        <form action="http://freshsent.info/cgi-bin/dada/mail.cgi" method="post">
+            <fieldset>
+            <input type="hidden" name="list" value="mikepearce" />
+            <p>
+                <label for="email">Email Address:</label>
+            	<input type="text" name="email" id="email" value="" />
+            </p>
+                <input type="hidden" name="f" id="f_s" value="subscribe" />
+            <p>
+                <input type="submit" value="Submit" class="processing" />
+            </p> 
+            </fieldset>
+        </form> 
 </div>
     
-<!--
-<div id="pastebox" class="clearfix">
-    <h2>Can't be arsed with a CSV? Paste each story in here</h2>
-    <?php echo form_open_multipart('stories/paster');?>
-    <label for="story">User story</label><br />
-    <textarea name="story" id="story"></textarea>
-    <br /><br />
-    <label for="cos">Conditions of Satisfaction</label><br />
-    <textarea name="cos" id="cos"></textarea>
-    <br /><br />
-    <label for="stakeholder">Stakeholder</label><br />
-    <input type="text" name="stakeholder" id="stakeholder" value="" />
-    <br /><br />
-    <label for="effort">Effort</label><br />
-    <input type="text" name="effort" id="effort" value="" />        
-    <br /><br />
-    <label for="release">Release</label><br />
-    <input type="text" name="release" id="release" value="" />
-    <br /><br />
-    <label for="scope">Scope</label><br />
-    <input type="text" name="scope" id="scope" value="" />        
-    <br /><br />
-    <label for="sprint">Sprint</label><br />
-    <input type="text" name="sprint" id="sprint" value="" />
-    <br />    <br />
-    <input type="submit" value="Save and add another" />
-    <br />    <br />
-    <input type="submit" value="Enough! Let me print!" />
-
-</div>
--->

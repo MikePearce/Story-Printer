@@ -3,7 +3,7 @@
     <a href="#" onClick="javascript:window.print();">Print these stories</a> | 
     <a href="/stories/clear" id="clearStories">Delete all these</a> | 
     <a href="/stories/add">Add another story</a> |
-    <a href="/stories/view/<?= $template; ?>">View as <?= ($template == 'simple' ? 'card' : 'list') ?></a>
+    <a href="/stories/view/<?= $template; ?>">View as <?= $template ?></a>
     
 </center>
 <br />
