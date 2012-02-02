@@ -247,7 +247,7 @@ ul.navigation li {
 .other {
     line-height: 20px;
 }
-.edit, .edit_area {
+.edit, .edit_area, .edit_title, .edit_effort, .edit_story, .edit_cos {
     padding: 2px;
     border: 1px solid transparent;
 
@@ -258,7 +258,7 @@ ul.navigation li {
 .edit_area_class_story {
     height: 1o0px;
 }
-.edit:hover, .edit_area:hover {
+.edit:hover, .edit_area:hover, .edit_title:hover, .edit_effort:hover, .edit_story:hover, .edit_cos:hover {
     border: 1px solid red;
 }
 /** mappings stuff **/
@@ -310,6 +310,30 @@ ul.navigation li {
 span.edit_settings {
         border-bottom: 1px solid red;
 }
+
+/** Story Table **/
+.story_table {}
+.story_table th {
+    font-weight: bold;
+    text-align: left;
+    background-color: #000;
+    color: #fff;
+}
+.story_table td {
+    border-bottom: 1px solid #999;
+}
+.story_table td {
+    padding: 5px;
+}
+
+    
+.story_table tr:nth-child(1n+1) {
+    background-color: #F2F2F2;
+}
+.story_table tr:nth-child(2n+1) {
+  background-color: #D9D9D9;
+}
+
 /** CATFISH **/
 div#catfish {
 	display: none; /* Stops catfish appearing before the page is fully loaded */

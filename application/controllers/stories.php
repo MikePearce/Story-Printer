@@ -86,7 +86,7 @@ class Stories extends CI_Controller {
 	        $new_stories = $new = array();
 	        $user_stories = $_SESSION['stories'];
 	        $_SESSION['stories'] = false;
-	        
+	        $counter = 1;
 	        // For each story...
 	        foreach($user_stories AS $story) {
 
@@ -116,11 +116,14 @@ class Stories extends CI_Controller {
     	        }
     	        
     	        // Check it's a useful story
-    	        if ($new['effort'] AND $new['story'] AND $new['cos']) {
+    	        if ($new['story'] != FALSE) {    	            
+
         	        // Store the new stories
+        	        $new['counter'] = $counter++;
     	            $_SESSION['stories'][] = $new;
     	        }
     	        $new = array();
+ 
     	        
 	        }
 
@@ -136,13 +139,28 @@ class Stories extends CI_Controller {
 	 * View the stories
 	 * @return void
 	 */
-	public function view()
+	public function view($view_style = 'card')
 	{
 	    $this->data->stories = (isset($_SESSION['stories']) 
 	                                ? $_SESSION['stories'] 
 	                                : false
 	                            );
 	    $this->data->settings = $this->usero->getSettings();
+	    // Simple view, or what?
+	    if ($view_style == 'simple') {
+	        $template = 'simple';
+	        $this->data->template = 'card';
+	    }
+	    else {
+	        $template = 'card';
+	        $this->data->template = 'simple';
+	    }
+	    
+	    // Return the view with the correct snippet
+	    $this->data->stories = $this->load->view(
+	        'snippets/story_'. $this->data->template .'.php', 
+	        $this->data, true
+	    );
     	$this->layout->view('stories', $this->data);
 	}
 	
@@ -197,7 +215,7 @@ class Stories extends CI_Controller {
                 "story" => 'Add your story',
                 "cos" => 'Add your COS',
                 "stakeholder" => '',
-                "effort" => '0',
+                "effort" => '',
                 "status" => '',
                 "type" => '',
                 "sprint" => '',

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+    /** Clear all teh stories **/
     $("#clearStories").click(function() {
         if (confirm("Are you sure?")) {
             window.location = '/stories/clear'
@@ -14,12 +16,30 @@ $(document).ready(function() {
     }
     
     // Jeditable stuff
+    // General editing
     $('.edit').editable('/stories/edit', {
         cssclass    : 'edit_input_class',
         submit      : 'OK',
         style       : 'inherit'
     });
-    $('.edit_area').editable('/stories/edit', {
+    
+    // Edit the title
+    $('.edit_title').editable('/stories/edit', {
+        cssclass    : 'edit_input_class',
+        submit      : 'OK',
+        style       : 'inherit'
+    });
+    
+    // Edit the efford
+    $('.edit_effort').editable('/stories/edit', {
+        cssclass    : 'edit_input_class',
+        submit      : 'OK',
+        style       : 'inherit',
+        placeholder : '0'
+    });
+    
+    // Edit the story
+    $('.edit_story').editable('/stories/edit', {
         type        : 'textarea',
         cssclass    : 'edit_area_class',
         submit      : 'OK',
@@ -31,12 +51,23 @@ $(document).ready(function() {
              return retval;
            },
         callback : function(value, settings) {
-            $('#catfish').catfish({
-            	animation: 'slide',
-            	closeLink: '#close-link',
-            	height: 404,
-            	sink: 1000
-            });
+
+        }
+    });
+    
+    // Edit the story
+    $('.edit_cos').editable('/stories/edit', {
+        type        : 'textarea',
+        cssclass    : 'edit_area_class',
+        submit      : 'OK',
+        style       : 'inherit',
+        data        : function(value, settings) {
+             /* Convert <br> to newline. */
+            var retval = value.replace(/\n/gi, '');
+            retval = value.replace(/<br[\s\/]?>/gi, '\n');
+             return retval;
+           },
+        callback : function(value, settings) {
         }
     });
     
