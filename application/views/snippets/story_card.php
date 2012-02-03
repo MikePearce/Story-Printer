@@ -6,7 +6,7 @@
 <div class="story_container">
     <div class="story_box">
         <div class="story_header">
-            <span class="edit_title" id="title_<?= $i; ?>"><?= (isset($story['counter']) ? $story['counter'] : false);?><?= (isset($story['title']) ? $story['title'] : false);?></span>
+            <span class="edit_title" id="title_<?= $i; ?>"><?= (isset($story['counter']) ? $story['counter'] .': ' : false);?><?= (isset($story['title']) ? $story['title'] : false);?></span>
         </div>
         <div class="story_body">
             <div class="effort edit_effort" id="effort_<?= $i; ?>"><?= $story['effort']; ?></div>

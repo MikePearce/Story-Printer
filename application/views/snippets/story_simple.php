@@ -1,6 +1,7 @@
 <table cellpadding="0" cellspacing="0" class="story_table">
     <tr>
         <th>ID</th>
+        <th>Title</th>
         <th>Story</th>
         <th>Effort</th>
         <th>CoS</th>
@@ -16,6 +17,7 @@
 ?>
     <tr>
      <td><?= (isset($story['counter']) ? $story['counter'] : false);?><?= (isset($story['title']) ? $story['title'] : false);?></td>
+     <td id="story_<?= $i; ?>" class="edit_title"><?= $story['title']?></td>
      <td id="story_<?= $i; ?>" class="edit_story"><?= $story['story']?></td>
      <td id="effort_<?= $i; ?>" class="edit"><?= $story['effort']; ?></td>
      <td id="cos_<?= $i; ?>" class="edit_cos"><?= str_replace("\n", "", nl2br($story['cos'])) ;?></td>

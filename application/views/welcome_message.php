@@ -44,6 +44,8 @@
     <dl>
         <dt>Story Number</dt>
             <dd>A unique identifier for your story</dd>
+        <dt>Story Title</dt>
+            <dd>A short title to represent the story.</dd>            
         <dt>User Story</dt>
             <dd>The story itself <em>(As a [user], I need [some feature], so that I get [some value])</em></dd>
         <dt>Acceptance criterias</dt>

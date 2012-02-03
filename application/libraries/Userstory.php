@@ -3,6 +3,11 @@
 class Userstory {
     
     /**
+    * The Title of the story ('The one with the input field')
+    */
+    public $title;    
+    
+    /**
     * The body of the story (As a... I need... so that.)
     */
     public $story;
@@ -58,7 +63,7 @@ class Userstory {
      */
      
     public function isValid() {
-       return ($this->effort AND $this->story AND $this->cos);
+       return ($this->story);
     }
     
     public static function fetch($id) {

@@ -82,7 +82,7 @@ body
     color: #000;
 }
 #constraint {
-    width: 900px;
+    width: 100%;
     margin: auto;
 }
 #header {
@@ -90,6 +90,8 @@ body
     width: 98%;
     margin: 10px;
     height: 50px;
+    width: 900px;
+    margin: auto;
 }
 #header_title {
     float: left;
@@ -151,6 +153,8 @@ dd {
 }
 #main_content {
     margin: 10px;
+    width: 900px;
+    margin: auto;
 }
 ul.navigation li {
     display: inline;

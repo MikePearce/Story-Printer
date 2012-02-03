@@ -21,7 +21,8 @@ class Stories extends CI_Controller {
 		    "status",
 		    "type",
 		    "sprint",
-		    "release"
+		    "release",
+		    "title"
 		);
     }
 
@@ -231,7 +232,8 @@ class Stories extends CI_Controller {
                 "status" => '',
                 "type" => '',
                 "sprint" => '',
-                "release" => ''
+                "release" => '',
+                "title" => ''
             )
         ); 
 	    
