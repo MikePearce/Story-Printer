@@ -40,5 +40,5 @@
 </div>
 <script type="text/javascript">
     // Track uploads as a goal
-    var clicky_goal = { id: "1316" };
+    _gaq.push(['_trackEvent', 'Uploads', 'CSV']);
 </script>
