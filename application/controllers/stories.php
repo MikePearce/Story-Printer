@@ -227,13 +227,13 @@ class Stories extends CI_Controller {
                 "id" => '',
                 "story" => 'Add your story',
                 "cos" => 'Add your COS',
-                "stakeholder" => '',
-                "effort" => '',
+                "stakeholder" => 'Click to edit',
+                "effort" => '0',
                 "status" => '',
                 "type" => '',
-                "sprint" => '',
-                "release" => '',
-                "title" => ''
+                "sprint" => 'Click to edit',
+                "release" => 'Click to edit',
+                "title" => 'Add your title'
             )
         ); 
 	    
