@@ -1,21 +1,10 @@
-<?
-    if ($template == 'card'):
-?>
-<style type="text/css">
-#main_content {
-    width: 98%;
-    margin: 20px;
-}
-</style>
-<? endif;?>
-<center class="noprint">
+<div class="noprint actions">
     <a href="#" onClick="javascript:window.print();">Print these stories</a> | 
     <a href="/stories/clear" id="clearStories">Delete all these</a> | 
     <a href="/stories/add">Add another story</a> |
     <a href="/stories/view/<?= $template; ?>">View as <?= $template ?></a>
     
-</center>
-<br />
+</div>
 <?
     if ($stories != false) {
         echo $stories;

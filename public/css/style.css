@@ -139,7 +139,7 @@ ul li {
     margin-left: 20px;
     font-size: 1.2em;
     color: #333;
-    line-height: 25px;    
+    line-height: 25px;
 }
 dl {
     margin: 10px;
@@ -165,6 +165,10 @@ ul.navigation li {
 }
 #content p {
 
+}
+.actions {
+    text-align: center;
+    margin-bottom: 10px;
 }
 .error {
     padding: 10px;
@@ -219,7 +223,8 @@ ul.navigation li {
     border-bottom: 1px solid #000;
 }
 .story_header span {
-    width: 100px;
+    display: block;
+    width: auto;
 }
 .story_body {
     font-size: 1.4em;
@@ -262,8 +267,11 @@ ul.navigation li {
 .edit_area_class_story {
     height: 1o0px;
 }
-.edit:hover, .edit_area:hover, .edit_title:hover, .edit_effort:hover, .edit_story:hover, .edit_cos:hover {
+
+[contenteditable="true"]:hover,
+[contenteditable="true"]:focus {
     border: 1px solid red;
+    background: #CCCCCC;
 }
 /** mappings stuff **/
 #map_table thead td {
@@ -299,8 +307,8 @@ ul.navigation li {
     text-align: center;
     width: 600px;
     height: 50px;
-    border: 1px solid #000;   
-    font-size: 1.5em; 
+    border: 1px solid #000;
+    font-size: 1.5em;
     display: none;
 }
 #message_slider {
@@ -316,7 +324,10 @@ span.edit_settings {
 }
 
 /** Story Table **/
-.story_table {}
+.story_table {
+    width: 100%;
+    border-collapse: separate;
+}
 .story_table th {
     font-weight: bold;
     text-align: left;
@@ -325,12 +336,8 @@ span.edit_settings {
 }
 .story_table td {
     border-bottom: 1px solid #999;
+    padding: 5px 7px;
 }
-.story_table td {
-    padding: 5px;
-}
-
-    
 .story_table tr:nth-child(1n+1) {
     background-color: #F2F2F2;
 }
@@ -350,3 +357,4 @@ div#catfish a#close-link {
 	right: 15px;
 	color: black;
 }
+

@@ -14,68 +14,40 @@ $(document).ready(function() {
     if ($('#error_slider').text() != '') {
         $('#error_slider').fadeIn('slow').delay(2000).fadeOut('slow');
     }
-    
-    // Jeditable stuff
-    // General editing
-    $('.edit').editable('/stories/edit', {
-        cssclass    : 'edit_input_class',
-        submit      : 'OK',
-        style       : 'inherit'
-    });
-    
-    // Edit the title
-    $('.edit_title').editable('/stories/edit', {
-        cssclass    : 'edit_input_class',
-        submit      : 'OK',
-        style       : 'inherit'
-    });
-    
-    // Edit the efford
-    $('.edit_effort').editable('/stories/edit', {
-        cssclass    : 'edit_input_class',
-        submit      : 'OK',
-        style       : 'inherit',
-        placeholder : '0'
-    });
-    
-    // Edit the story
-    $('.edit_story').editable('/stories/edit', {
-        type        : 'textarea',
-        cssclass    : 'edit_area_class',
-        submit      : 'OK',
-        style       : 'inherit',
-        data        : function(value, settings) {
-             /* Convert <br> to newline. */
-            var retval = value.replace(/\n/gi, '');
-            retval = value.replace(/<br[\s\/]?>/gi, '\n');
-             return retval;
-           },
-        callback : function(value, settings) {
 
-        }
-    });
-    
-    // Edit the story
-    $('.edit_cos').editable('/stories/edit', {
-        type        : 'textarea',
-        cssclass    : 'edit_area_class',
-        submit      : 'OK',
-        style       : 'inherit',
-        data        : function(value, settings) {
-             /* Convert <br> to newline. */
-            var retval = value.replace(/\n/gi, '');
-            retval = value.replace(/<br[\s\/]?>/gi, '\n');
-             return retval;
-           },
-        callback : function(value, settings) {
-        }
-    });
-    
-    $('.edit_settings').editable('/user/savesettings', {
-        cssclass    : 'edit_input_class',
-        submit      : 'OK',
-        style       : 'inherit'
-    });
-       
+    // Contains ajax stuff for saving edits
+    var sendEdit = function(obj) {
+        var data = 'undefined' == typeof obj.data.postData ? {id: this.id, value: $(this).text()} : obj.data.postData;
+        $.ajax({
+            type: 'post',
+            url: obj.data.url,
+            data: data
+        });
+    };
 
+    // editing stuff
+    $('.edit').blur(
+        {url: '/stories/edit'},
+        sendEdit
+    );
+
+    $('.edit_story, .edit_cos').blur(function() {
+        var value = $(this).html();
+
+        //Convert <br> to newline.
+        var deHtmled = value.replace(/\n/gi, '');
+        deHtmled = value.replace(/<br[\s\/]?>/gi, '\n');
+        
+        sendEdit({
+            data: {
+                url: '/stories/edit',
+                postData: {id: this.id, value: deHtmled}
+            }
+        });
+    });
+    
+    $('.edit_settings').blur(
+        {url: '/user/savesettings'},
+        sendEdit
+    );
 });
